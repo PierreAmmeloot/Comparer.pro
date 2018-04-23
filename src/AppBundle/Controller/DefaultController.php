@@ -120,7 +120,7 @@ class DefaultController extends Controller
     }
     
     /**
-     * @Route("listing-tags", name="listingTags")
+     * @Route("tag", name="listingTags")
      * @param Request $request
      * @param BoolsAsTags $boolsAsTags
      * @return \Symfony\Component\HttpFoundation\Response
