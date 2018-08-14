@@ -211,7 +211,7 @@ class ImportEntities
             foreach ($splSoftFile as $rowFile) {
 
                 if (count($rowFile) !== $totalFields) {
-                    array_push($this->errors, "Nombre de colonne incorrect dans le fichier : " . $fileName . ".csv");
+                    array_push($this->errors, "Nombre de colonne incorrect dans le fichier : " . $fileName . ".csv ; attendu ".$totalFields." versus ".count($rowFile));
 
                 } else {
 
