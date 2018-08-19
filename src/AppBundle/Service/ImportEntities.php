@@ -429,12 +429,12 @@ class ImportEntities
         }
     }
 
-    public function addSeeAlsoBySoftwares() {
+    public function addSeeAlsoBySoftwares()
+    {
         $repoSoft = $this->em->getRepository(SoftMain::class);
         $softwares = $repoSoft->findAll();
-        $repoSeeAlso = $this->em->getRepository(SoftSeeAlso::class);
         foreach($softwares as $software) {
-
+            if($software instanceof SoftMain)
             $addSeeAlso = new SoftSeeAlso();
             $addSeeAlso->setSoftMain($software);
             $listSeeAlso = $this->serviceSeeAlso->getListOfSameSoftwares($software, 6);
@@ -442,6 +442,8 @@ class ImportEntities
             $addSeeAlso->setBooleans($bools);
             $addSeeAlso->setSoftSeeAlsoArray($listSeeAlso);
             $this->em->persist($addSeeAlso);
+            $software->setSoftSeeAlso($addSeeAlso);
+            $this->em->persist($software);
         }
         $this->em->flush();
     }

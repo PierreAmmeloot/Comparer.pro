@@ -7,6 +7,7 @@ use AppBundle\Entity\SoftSeeAlso;
 use AppBundle\Entity\Tag;
 use AppBundle\Entity\Versus;
 use AppBundle\Form\CompareType;
+use AppBundle\Repository\SoftMainRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use SensioLabs\Security\Exception\HttpException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -20,6 +21,8 @@ use AppBundle\Service\AwesomeSearch;
 
 class DefaultController extends Controller
 {
+
+
     /**
      * @Route("/", name="homepage")
      */
@@ -62,18 +65,23 @@ class DefaultController extends Controller
             'bools' => $bools,
         ]);
     }
+
     private static function compareSoftNames(SoftMain $softMain1, SoftMain $softMain2)
     {
         return strcmp($softMain1->getName(), $softMain2->getName());
     }
+
     /**
      * @Route("logiciels", name="listingSoftware")
      */
     public function listingSoftwareAction(Request $request)
     {
 
-        $repository = $this->getDoctrine()->getRepository(SoftMain::class);
-        $softMains = $repository->findAll();
+
+        $softMains = $this->getDoctrine()
+            ->getRepository(SoftMain::class)
+            ->findBy(array("isActive" => true));
+
         usort($softMains, 'self::compareSoftNames');
 
         return $this->render('default/listing-software.html.twig', [
@@ -146,13 +154,19 @@ class DefaultController extends Controller
      */
     public function listingTagsAction(Request $request, BoolsAsTags $boolsAsTags)
     {
-
+        $softmainrepo = $this->getDoctrine()->getRepository(SoftMain::class);
+        dump($softmainrepo->getSoftByAnyBool('rgpd', 'softInfo'));
         $bools = $boolsAsTags->getGoodBools();
         $repository = $this->getDoctrine()->getRepository(Tag::class);
         $tags = $repository->findAll();
 
         foreach ($tags as $tag) {
-            $bools[] = array('slug' => $tag->getSlug(), 'number' => count($tag->getSoftMains()), 'entitie' => $tag->getName());
+            $number = 0;
+            if(!empty($tag->getActiveSoftmains()))
+            {
+                $number = count($tag->getActiveSoftmains());
+            }
+            $bools[] = ['slug' => $tag->getSlug(), 'number' => $number, 'entitie' => $tag->getName()];
         }
 
         usort($bools, 'self::compareTags');
@@ -171,9 +185,9 @@ class DefaultController extends Controller
      */
     public function tagAction(Request $request, string $slug, BoolsAsTags $boolsAsTags)
     {
+        $repositoryTag = $this->getDoctrine()->getRepository(Tag::class);
+        $tag = $repositoryTag->findOneBy(['slug' => $slug]);
 
-        $repository = $this->getDoctrine()->getRepository(Tag::class);
-        $tag = $repository->findOneBy(['slug' => $slug]);
         if (empty($tag)) {
             $softwares = $boolsAsTags->getListSoftwaresByEntitieSlug($slug);
             $boolean = $boolsAsTags->getDescriptionBySlug($slug);;
@@ -181,11 +195,18 @@ class DefaultController extends Controller
                 'softwares' => $softwares,
                 'boolean' => $boolean,
             ]);
-        }
+        } else {
+            $activeSoftMains = $tag->getActiveSoftmains();
+            return $this->render('default/unique-tag.html.twig', [
+                'tag' => [
+                    'name' => $tag->getName(),
+                    'title' => $tag->getTitle(),
+                    'description' => $tag->getDescription(),
 
-        return $this->render('default/unique-tag.html.twig', [
-            'tag' => $tag,
-        ]);
+                ],
+                'softwares' => $activeSoftMains,
+            ]);
+        }
     }
 
     /**
@@ -194,7 +215,6 @@ class DefaultController extends Controller
     public
     function mentionsLegalesAction(Request $request)
     {
-
         return $this->render('default/mentions-legales.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.project_dir')) . DIRECTORY_SEPARATOR,
         ]);
@@ -203,9 +223,8 @@ class DefaultController extends Controller
     /**
      * @Route("a-propos", name="a-propos")
      */
-    public function  aProposAction(Request $request)
+    public function aProposAction(Request $request)
     {
-
         return $this->render('default/a-propos.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.project_dir')) . DIRECTORY_SEPARATOR,
         ]);

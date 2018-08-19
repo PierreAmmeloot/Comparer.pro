@@ -1,7 +1,6 @@
 <?php
 
 namespace AppBundle\Repository;
-use AppBundle\Entity\SoftMain;
 
 /**
  * SoftMainRepository
@@ -11,6 +10,13 @@ use AppBundle\Entity\SoftMain;
  */
 class SoftMainRepository extends \Doctrine\ORM\EntityRepository
 {
+
+    public function findAllActiveSoftwares(){
+        $qb = $this->createQueryBuilder('s')
+            ->where('isActive', true)
+            ->getQuery();
+        return $qb->getResult();
+    }
 
     /**
      * @param $word
@@ -41,7 +47,8 @@ class SoftMainRepository extends \Doctrine\ORM\EntityRepository
         $qb = $this
             ->createQueryBuilder('s')
             ->join('s.' . $entityName , 't')
-            ->where('t.' . $booleanKey . ' = true')
+            ->where('s.isActive = true')
+            ->andWhere('t.' . $booleanKey . ' = true')
             ->getQuery();
         return $qb->getResult();
     }
@@ -274,6 +281,18 @@ class SoftMainRepository extends \Doctrine\ORM\EntityRepository
 
             ->getQuery();
         return $qb->getSingleResult();
+    }
+
+
+    public function getActiveSoftwaresByTag(int $id)
+    {
+        $qb = $this->createQueryBuilder('s')
+            ->where('s.isActive = TRUE')
+            ->join('s.tags' , 't')
+            ->Andwhere('t.id = :id')
+            ->setParameter('id', $id)
+            ->getQuery();
+        return $qb->getResult();
     }
 
 }

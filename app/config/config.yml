@@ -90,10 +90,16 @@ easy_admin:
 
         Softwares:
             class: AppBundle\Entity\SoftMain
+            list:
+              title: '%%entity_label%% listing'
+              max_results: 100
+
             form:
               fields:
                 - name
                 - { property: 'name', label: 'Nom du logiciel :' }
+                - isActive
+                - { property: 'isActive', label: 'Actif ? :' }
                 - title
                 - { property: 'title', label: 'Title (SEO) :' }
                 - type

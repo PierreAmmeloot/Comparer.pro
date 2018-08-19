@@ -149,7 +149,8 @@ class AdminController extends BaseAdminController
         if ($entity instanceof SoftMain)
         {
             $bools = $this->boolsAsTags->getBoolsBySoftware($entity);
-            $entity->getSoftSeeAlso()->setBooleans($bools);
+            $softSeeAlso = $entity->getSoftSeeAlso();
+                $softSeeAlso->setBooleans($bools);
 
         }
         return parent::preUpdateEntity($entity);

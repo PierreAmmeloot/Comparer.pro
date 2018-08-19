@@ -159,7 +159,7 @@ class SoftMain
 
     /**
      * One SoftMain has One SeeAlso
-     * @ORM\OneToOne(targetEntity="SoftSeeAlso", inversedBy="softMain", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="SoftSeeAlso", inversedBy="softMain")
      * @ORM\JoinColumn(name="softSeeAlsoId", referencedColumnName="id", onDelete="CASCADE")
 
      */
@@ -197,6 +197,13 @@ class SoftMain
      * @Assert\File(mimeTypes={ "image/png" })
      */
     private $logo;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="is_active", type="boolean", nullable=true)
+     */
+    private $isActive;
 
 
     /**
@@ -850,5 +857,25 @@ class SoftMain
     {
         return $this->getName();
     }
+
+    /**
+     * @return mixed
+     */
+    public function getIsActive()
+    {
+        return $this->isActive;
+    }
+
+    /**
+     * @param bool $isActive
+     * @return SoftMain
+     */
+    public function setIsActive(bool $isActive): SoftMain
+    {
+        $this->isActive = $isActive;
+        return $this;
+    }
+
+
 
 }

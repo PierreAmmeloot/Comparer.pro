@@ -208,6 +208,24 @@ class Tag
         return $this->softMains;
     }
 
+    public function getActiveSoftmains(): array
+    {
+        $softMains = $this->getSoftMains();
+
+        $activeSoftMains = [];
+        foreach ($softMains as $softMain)
+        {
+            if (!empty($softMain->getIsActive))
+            {
+                if($softMain->getIsActive === true)
+                $activeSoftMains[] = $softMain;
+            }
+        }
+
+        return $activeSoftMains;
+    }
+
+
     public function __toString()
     {
         return $this->getName();
