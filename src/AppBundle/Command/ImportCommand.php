@@ -26,7 +26,6 @@ class ImportCommand extends ContainerAwareCommand
         $this
             ->setName('import:database')
             ->setDescription('Import entities from CSV file');
-
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -63,7 +62,7 @@ class ImportCommand extends ContainerAwareCommand
         }
 
         $errors = $serviceImport->getErrors();
-        if (count($errors) > 0) {
+        if (is_array($errors) && count($errors) > 0) {
             foreach ($errors as $error) {
                 $output->writeln($error);
             }

@@ -92,7 +92,7 @@ Booleans:
           Synonymous: champs champ personnalisé personalisé personnallisé personallisé personnalisés personalisés personnallisés personallisés
         isIllimitedFields:
           Description: <p>Dans le cas de champs personnalisés, le fait est que pour des raisons de performance certains logiciels limitent le nombre de champs pouvant être créé.</p>
-          Name: Champs illimité
+          Name: Champs de contacts illimité
           Slug: champs-illimite
           Synonymous: hamps champ illimite illimités illimité
         isImportCsv:
@@ -102,7 +102,7 @@ Booleans:
           Synonymous: import Comma Coma separated values value
         isAutoDuplicate:
           Description: <p></p>
-          Name: Déduplication automatique
+          Name: Déduplication automatique des contacts
           Slug: deduplication-automatique
           Synonymous: deduplication deduplications déduplications
         isLeadStages:
@@ -113,7 +113,7 @@ Booleans:
     softSegmentOperation:
         isSegmentCreation:
           Description: <p></p>
-          Name: Creation segment
+          Name: Creation segment marketing
           Slug: creation-segment
           Synonymous: creation segments
         isIntelligentSegment:
@@ -134,7 +134,7 @@ Booleans:
           Synonymous: score prospect prospects
         isCreationCampaign:
           Description: <p></p>
-          Name: Création campagnes
+          Name: Création campagnes marketing
           Slug: creation-campagnes
           Synonymous: création
         isDripMarketingCampaign:
@@ -207,12 +207,12 @@ Booleans:
           Synonymous: support
         isPhoneSupport:
           Description: <p></p>
-          Name: Support telephone
+          Name: Support téléphonique
           Slug: support-telephone
           Synonymous: support
         isChatSupport:
           Description: <p></p>
-          Name: Support chat ligne
+          Name: Support par chat en ligne
           Slug: support-chat-ligne
           Synonymous: support
         isKnowledgeBase:

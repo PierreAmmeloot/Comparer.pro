@@ -179,7 +179,7 @@ class ImportEntities
                     ->findOneBy([
                         'name' => $row[0],
                     ]);
-                //  array_push($this->errors, "Tag: " . $soft . " is duplicate in file " . $file . ".csv.");
+                //  array_push($this->errors, "Software: " . $soft . " is duplicate in file " . $file . ".csv.");
                 break;
 
         }
@@ -204,15 +204,18 @@ class ImportEntities
 
             $totalFields = 1;
             foreach ($softEntitiesYml as $softEntityYml) {
-                $countField = count($softEntityYml["fields"]);
+                if(is_array($softEntityYml["fields"])) {
+                    $countField = count($softEntityYml["fields"]);
+                } else {
+                    $countField = 0;
+                }
                 $totalFields += $countField;
             }
 
             foreach ($splSoftFile as $rowFile) {
 
-                if (count($rowFile) !== $totalFields) {
+                if (is_array($rowFile) && count($rowFile) !== $totalFields) {
                     array_push($this->errors, "Nombre de colonne incorrect dans le fichier : " . $fileName . ".csv ; attendu ".$totalFields." versus ".count($rowFile));
-
                 } else {
 
                         $stillExists = $this->searchForDuplicate($fileName, $rowFile);
@@ -310,7 +313,7 @@ class ImportEntities
                                 $convertedData[$caseImport] = $row[$caseImport];
                             }
 
-                            if (count($property) === 3) {
+                            if (is_array($property) && count($property) === 3) {
                                 $soft = $this->em->getRepository(SoftMain::class)
                                     ->findOneBy([
                                         'name' => $convertedData[$caseImport],
