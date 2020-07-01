@@ -15,7 +15,31 @@ Booleans:
         isEmail:
           Name: Envoi d'email
           Slug: envoi-d-email
-          Description: <p>Logiciel permettant l'envoi de campagne email.</p>
+          Description: <h1>Envoi de campagne d&rsquo;emailing</h1>
+<p>L&rsquo;emailing est une pratique du Webmarketing qui se sert de mails pour faire parvenir des informations aux clients et aux prospects. Le but est soit de les sensibiliser, soit de mener des actions de fid&eacute;lisations pour ceux qui sont d&eacute;j&agrave; des clients. Cependant, une campagne d&rsquo;emailing r&eacute;ussie impose l&rsquo;observation de certaines r&egrave;gles.</p>
+<p>La premi&egrave;re chose &agrave; faire est de constituer une liste de contacts. Ces derniers doivent &ecirc;tre int&eacute;ress&eacute;s et accepter le fait que vous leur fassiez parvenir des mails. Aussi, la collecte de leur adresse mail doit se faire de fa&ccedil;on formelle surtout avec les nouvelles dispositions prises dans le domaine. La collecte de donn&eacute;es personnelles doit donc respecter le fameux RGPD.</p>
+<p>La seconde &eacute;tape vous impose d&rsquo;&eacute;laborer une strat&eacute;gie de ciblage, car il est important de maximiser l&rsquo;impact qu&rsquo;aura une campagne d&rsquo;emailing. &Agrave; cet effet, l&rsquo;&eacute;poque du &laquo;&thinsp;mass mailing&thinsp;&raquo; est r&eacute;volue. D&eacute;sormais, il convient d&rsquo;envoyer des mails personnalis&eacute;s. Par ailleurs, il est inutile d&rsquo;envoyer un mail &agrave; tout votre r&eacute;pertoire au risque d&rsquo;accroitre le taux de d&eacute;sinscription. Pour vous y aider, vous disposez tels que :</p>
+<ul>
+<li>La segmentation des contacts en plusieurs listes&thinsp;;</li>
+<li>La cr&eacute;ation de segments au sein d&rsquo;une liste&thinsp;;</li>
+<li>Le lead scoring.</li>
+</ul>
+<p>La troisi&egrave;me &eacute;tape vous sugg&egrave;re de cr&eacute;er un emailing en responsive design. Ceci vous permet de lui donner un caract&egrave;re simple et intuitif. Ainsi, ce dernier s&rsquo;affiche parfaitement sur tout type d&rsquo;&eacute;crans. Les &eacute;l&eacute;ments indispensables &agrave; une bonne version responsive sont :</p>
+<ul>
+<li>Le logo de la structure&thinsp;;</li>
+<li>L&rsquo;offre accompagn&eacute;e d&rsquo;un bouton CAT (call to action)&thinsp;;</li>
+<li>Des liens qui redirigent vers vos sites et vers les diff&eacute;rentes plateformes sociales que vous administrez.</li>
+</ul>
+<p>La quatri&egrave;me &eacute;tape aborde l&rsquo;optimisation de certains param&egrave;tres, il s&rsquo;agit en r&eacute;alit&eacute; de la mani&egrave;re dont votre mail est affich&eacute; chez votre interlocuteur. Ainsi, l&rsquo;objet, le preheader, le nom et l&rsquo;adresse de l&rsquo;exp&eacute;diteur sont les diff&eacute;rents facteurs &agrave; optimiser. Pour y arriver, il faut respecter certaines consignes comme le respect d&rsquo;un nombre de caract&egrave;res maximum.</p>
+<p>En cinqui&egrave;me position, il faut programmer le d&eacute;but de la campagne d&rsquo;emailing au bon moment. Ainsi, un choix de la date, et de l&rsquo;heure d&rsquo;envoi en fonction des habitudes de votre cible s&rsquo;impose. Pour d&eacute;terminer ces donn&eacute;es, il faut se r&eacute;f&eacute;rer aux donn&eacute;es statistiques.</p>
+<p>La derni&egrave;re &eacute;tape d&rsquo;une campagne d&rsquo;emailing r&eacute;ussie est le suivi et l&rsquo;analyse des r&eacute;sultats. En effet, il faut observer les diff&eacute;rents indicateurs de performances (KPI) afin de les am&eacute;liorer pour les prochaines campagnes. Il s&rsquo;agit entre autres de :</p>
+<ul>
+<li>Le taux d&rsquo;ouverture&thinsp;;</li>
+<li>Le taux de rebond&thinsp;;</li>
+<li>Le taux de clic&thinsp;;</li>
+<li>Le taux de d&eacute;sinscription.</li>
+</ul>
+<p>Retrouvez sur cette page les logiciels permettant l'envoi de campagnes d'emailing.</p>
           Synonymous: mail
         isSms:
           Name: Envoi de sms

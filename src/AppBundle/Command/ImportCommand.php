@@ -96,12 +96,9 @@ ____    __    ____  _______  __       __          _______   ______   .__   __.  
             ');
                 $connection->commit();
 
-
-
             } catch (\Exception $e) {
               
                 $connection->rollBack();
-
                 $output->writeln('Exception reçue : ' . $e->getMessage() . PHP_EOL);
             }
 
