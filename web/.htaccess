@@ -1,7 +1,8 @@
 # Redirect
 Redirect 301 /logiciels/active-campaign https://comparer.pro/logiciels/activecampaign
-Redirect 301 /logiciels/mautic-maestro https://comparer.pro/logiciels/mautic-org
-Redirect 301 /logiciels/mautic-pro https://comparer.pro/logiciels/mautic-org
+Redirect 301 /logiciels/mautic-maestro https://comparer.pro/logiciels/mautic
+Redirect 301 /logiciels/mautic-pro https://comparer.pro/logiciels/mautic
+Redirect 301 /logiciels/mautic-org https://comparer.pro/logiciels/mautic
 
 # Use the front controller as index file. It serves as a fallback solution when
 # every other rewrite/redirect fails (e.g. in an aliased environment without
